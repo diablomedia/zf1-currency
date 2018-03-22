@@ -20,12 +20,6 @@
  * @version    $Id$
  */
 
-/**
- * Zend_Currency
- */
-require_once 'Zend/Locale.php';
-require_once 'Zend/Currency.php';
-
 
 /**
  * @category   Zend

@@ -1,2 +1,4 @@
 parameters:
     ignoreErrors:
+        - '#Static method Zend_Locale_Data::clearCache\(\) invoked with 1 parameter, 0 required\.#'
+        - '#Casting to .+ something that.s already .+\.#'
