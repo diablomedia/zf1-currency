@@ -14,8 +14,8 @@
         "php": ">=7.0.0",
         "diablomedia/zendframework1-exception": "^1.0.0",
         "diablomedia/zendframework1-loader": "^1.0.0",
-        "diablomedia/zendframework1-cache": "dev-master",
-        "diablomedia/zendframework1-locale": "dev-master"
+        "diablomedia/zendframework1-cache": "^1.0.0",
+        "diablomedia/zendframework1-locale": "^1.0.0"
     },
     "autoload": {
         "psr-0": {
