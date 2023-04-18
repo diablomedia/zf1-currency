@@ -31,6 +31,8 @@
  */
 class Zend_CurrencyTest extends PHPUnit\Framework\TestCase
 {
+    protected $_cache;
+
     public function setUp(): void
     {
         require_once 'Zend/Cache.php';
@@ -65,21 +67,21 @@ class Zend_CurrencyTest extends PHPUnit\Framework\TestCase
 
         try {
             $currency = new Zend_Currency();
-            $this->assertTrue($currency instanceof Zend_Currency);
+            $this->assertInstanceOf(Zend_Currency::class, $currency);
         } catch (Zend_Currency_Exception $e) {
             $this->assertStringContainsString('No region found within the locale', $e->getMessage());
         }
 
         $currency = new Zend_Currency('de_AT');
-        $this->assertTrue($currency instanceof Zend_Currency);
+        $this->assertInstanceOf(Zend_Currency::class, $currency);
         $this->assertSame('€ 1.000,00', $currency->toCurrency(1000));
 
         $currency = new Zend_Currency('de_DE');
-        $this->assertTrue($currency instanceof Zend_Currency);
+        $this->assertInstanceOf(Zend_Currency::class, $currency);
         $this->assertSame('1.000,00 €', $currency->toCurrency(1000));
 
         $currency = new Zend_Currency($locale);
-        $this->assertTrue($currency instanceof Zend_Currency);
+        $this->assertInstanceOf(Zend_Currency::class, $currency);
         $this->assertSame('€ 1.000,00', $currency->toCurrency(1000));
 
         try {
@@ -97,21 +99,21 @@ class Zend_CurrencyTest extends PHPUnit\Framework\TestCase
 
         try {
             $currency = new Zend_Currency(array('currency' => 'EUR'));
-            $this->assertTrue($currency instanceof Zend_Currency);
+            $this->assertInstanceOf(Zend_Currency::class, $currency);
         } catch (Zend_Currency_Exception $e) {
             $this->assertStringContainsString('No region found within the locale', $e->getMessage());
         }
 
         try {
             $currency = new Zend_Currency(array('currency' => 'USD'));
-            $this->assertTrue($currency instanceof Zend_Currency);
+            $this->assertInstanceOf(Zend_Currency::class, $currency);
         } catch (Zend_Currency_Exception $e) {
             $this->assertStringContainsString('No region found within the locale', $e->getMessage());
         }
 
         try {
             $currency = new Zend_Currency(array('currency' => 'AWG'));
-            $this->assertTrue($currency instanceof Zend_Currency);
+            $this->assertInstanceOf(Zend_Currency::class, $currency);
         } catch (Zend_Currency_Exception $e) {
             $this->assertStringContainsString('No region found within the locale', $e->getMessage());
         }
@@ -125,23 +127,23 @@ class Zend_CurrencyTest extends PHPUnit\Framework\TestCase
         $locale = new Zend_Locale('de_AT');
 
         $currency = new Zend_Currency('USD', 'de_AT');
-        $this->assertTrue($currency instanceof Zend_Currency);
+        $this->assertInstanceOf(Zend_Currency::class, $currency);
         $this->assertSame('$ 1.000,00', $currency->toCurrency(1000));
 
         $currency = new Zend_Currency('USD', $locale);
-        $this->assertTrue($currency instanceof Zend_Currency);
+        $this->assertInstanceOf(Zend_Currency::class, $currency);
         $this->assertSame('$ 1.000,00', $currency->toCurrency(1000));
 
         $currency = new Zend_Currency('de_AT', 'USD');
-        $this->assertTrue($currency instanceof Zend_Currency);
+        $this->assertInstanceOf(Zend_Currency::class, $currency);
         $this->assertSame('$ 1.000,00', $currency->toCurrency(1000));
 
         $currency = new Zend_Currency($locale, 'USD');
-        $this->assertTrue($currency instanceof Zend_Currency);
+        $this->assertInstanceOf(Zend_Currency::class, $currency);
         $this->assertSame('$ 1.000,00', $currency->toCurrency(1000));
 
         $currency = new Zend_Currency('EUR', 'de_AT');
-        $this->assertTrue($currency instanceof Zend_Currency);
+        $this->assertInstanceOf(Zend_Currency::class, $currency);
         $this->assertSame('€ 1.000,00', $currency->toCurrency(1000));
 
         try {
@@ -160,11 +162,11 @@ class Zend_CurrencyTest extends PHPUnit\Framework\TestCase
         $locale = new Zend_Locale('de_AT');
 
         $currency = new Zend_Currency('USD', 'de_AT');
-        $this->assertTrue($currency instanceof Zend_Currency);
+        $this->assertInstanceOf(Zend_Currency::class, $currency);
         $this->assertSame('$ 1.000,00', $currency->toCurrency(1000));
 
         $currency = new Zend_Currency('USD', $locale);
-        $this->assertTrue($currency instanceof Zend_Currency);
+        $this->assertInstanceOf(Zend_Currency::class, $currency);
         $this->assertSame('$ 1.000,00', $currency->toCurrency(1000));
 
         try {
@@ -187,35 +189,35 @@ class Zend_CurrencyTest extends PHPUnit\Framework\TestCase
         }
 
         $currency = new Zend_Currency('USD', 'de_AT');
-        $this->assertTrue($currency instanceof Zend_Currency);
+        $this->assertInstanceOf(Zend_Currency::class, $currency);
         $this->assertSame('$ 1.000,00', $currency->toCurrency(1000));
 
         $currency = new Zend_Currency('Euro', 'de_AT');
-        $this->assertTrue($currency instanceof Zend_Currency);
+        $this->assertInstanceOf(Zend_Currency::class, $currency);
         $this->assertSame('EUR 1.000,00', $currency->toCurrency(1000));
 
         $currency = new Zend_Currency('USD', $locale);
-        $this->assertTrue($currency instanceof Zend_Currency);
+        $this->assertInstanceOf(Zend_Currency::class, $currency);
         $this->assertSame('$ 1.000,00', $currency->toCurrency(1000));
 
         $currency = new Zend_Currency('de_AT', 'EUR');
-        $this->assertTrue($currency instanceof Zend_Currency);
+        $this->assertInstanceOf(Zend_Currency::class, $currency);
         $this->assertSame('€ 1.000,00', $currency->toCurrency(1000));
 
         $currency = new Zend_Currency($locale, 'USD');
-        $this->assertTrue($currency instanceof Zend_Currency);
+        $this->assertInstanceOf(Zend_Currency::class, $currency);
         $this->assertSame('$ 1.000,00', $currency->toCurrency(1000));
 
         $currency = new Zend_Currency('EUR', 'en_US');
-        $this->assertTrue($currency instanceof Zend_Currency);
+        $this->assertInstanceOf(Zend_Currency::class, $currency);
         $this->assertSame('€1,000.00', $currency->toCurrency(1000));
 
         $currency = new Zend_Currency('en_US', 'USD');
-        $this->assertTrue($currency instanceof Zend_Currency);
+        $this->assertInstanceOf(Zend_Currency::class, $currency);
         $this->assertSame('$1,000.00', $currency->toCurrency(1000));
 
         $currency = new Zend_Currency($locale, 'EUR');
-        $this->assertTrue($currency instanceof Zend_Currency);
+        $this->assertInstanceOf(Zend_Currency::class, $currency);
         $this->assertSame('€ 1.000,00', $currency->toCurrency(1000));
     }
 
@@ -552,7 +554,7 @@ class Zend_CurrencyTest extends PHPUnit\Framework\TestCase
     public function testCaching()
     {
         $cache = Zend_Currency::getCache();
-        $this->assertTrue($cache instanceof Zend_Cache_Core);
+        $this->assertInstanceOf(Zend_Cache_Core::class, $cache);
         $this->assertTrue(Zend_Currency::hasCache());
 
         Zend_Currency::clearCache();
