@@ -29,7 +29,7 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Currency
  */
-class ExchangeTest implements Zend_Currency_CurrencyInterface
+class ExchangeTestClass implements Zend_Currency_CurrencyInterface
 {
     /**
      * Test method for exchange rate

@@ -762,13 +762,13 @@ class Zend_CurrencyTest extends PHPUnit\Framework\TestCase
         $currency  = new Zend_Currency(array('currency' => 'EUR', 'locale' => 'de_AT', 'value' => 100));
         $currency2 = new Zend_Currency(array('currency' => 'EUR', 'locale' => 'de_AT', 'value' => 100));
 
-        require_once 'Currency/ExchangeTest.php';
+        require_once 'Currency/ExchangeTestClass.php';
 
         $this->assertEquals(null, $currency->getService());
-        $currency->setService(new ExchangeTest());
+        $currency->setService(new ExchangeTestClass());
         $this->assertTrue($currency->getService() instanceof Zend_Currency_CurrencyInterface);
 
-        $currency->setService('ExchangeTest');
+        $currency->setService('ExchangeTestClass');
         $this->assertTrue($currency->getService() instanceof Zend_Currency_CurrencyInterface);
     }
 
@@ -796,10 +796,10 @@ class Zend_CurrencyTest extends PHPUnit\Framework\TestCase
     public function testSetValueWithoutLocale()
     {
         $currency = new Zend_Currency('RUB', 'ru_RU');
-        require_once 'Currency/ExchangeTest.php';
+        require_once 'Currency/ExchangeTestClass.php';
 
         $this->assertEquals(null, $currency->getService());
-        $currency->setService(new ExchangeTest());
+        $currency->setService(new ExchangeTestClass());
         $this->assertTrue($currency->getService() instanceof Zend_Currency_CurrencyInterface);
 
         $currency->setValue(100, 'USD');
@@ -840,7 +840,7 @@ class Zend_CurrencyTest extends PHPUnit\Framework\TestCase
      * Data Provider for testConstructorAllowsOverridingCurrencyDisplayFormat
      * @see ZF-11798
      */
-    public function providerConstructorAllowsOverridingCurrencyDisplayFormat()
+    public static function providerConstructorAllowsOverridingCurrencyDisplayFormat()
     {
         return array(
             array(Zend_Currency::NO_SYMBOL, '100.00'),
