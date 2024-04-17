@@ -30,7 +30,7 @@
         }
     },
     "require-dev": {
-        "diablomedia/zendframework1-xml": "^1.0.7",
+        "diablomedia/zendframework1-xml": "dev-master as 1.0.7",
         "phpunit/phpunit": "^9.6.19 || ^10.5.18",
         "phpstan/phpstan": "1.10.67",
         "friendsofphp/php-cs-fixer": "3.54.0",
